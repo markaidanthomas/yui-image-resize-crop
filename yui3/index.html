@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>Client-side Image resizing/cropping</title>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.2.0/build/reset-fonts-grids/reset-fonts-grids.css">
+<link rel="stylesheet" type="text/css" href="c/demo.css">
+<link rel="stylesheet" type="text/css" href="c/yahoo.widget.image-resize-crop.css">
+</head>
+<body>
+    
+<script type="text/javascript">
+/*
+    Don't depend on having YUI at this point
+*/
+if(!document.body.className.match(/\bjs\b/)){
+    document.body.className += ' js';
+}
+</script>    
+
+    
+<h1>Client-side Image resizing/cropping</h1>
+
+<p>View with JS enabled/disabled</p>
+<p>With JavaScript:</p>
+<ul>
+    <ll>Images are hidden while loading</ll>
+    <li>Script polls each image for 'complete' property == true</li>
+    <li>Image optionally resized to best fit</li>
+    <li>Image repositioned within container based on posMethod ('trueCentre', 'horizontalCentre', 'verticalCentre' or a custom method)</li>
+</ul>
+
+<h2>Resized to 200x200 and cropped to 'trueCentre'</h2>
+<ul id="demo1">
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/95/207208507_7b3b090ed1.jpg?v=0" width="500" height="375"></li>
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/79/207200548_fc00cbadef.jpg?v=0" width="500" height="375"></li>
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/85/207212291_d281c140ea_z.jpg" width="480" height="640"></li>
+</ul>
+<h2>Resized to 150x140 and cropped to 'horizontalCentre'</h2>
+<ul id="demo2">
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/95/207208507_7b3b090ed1.jpg?v=0" width="500" height="375"></li>
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/79/207200548_fc00cbadef.jpg?v=0" width="500" height="375"></li>
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/85/207212291_d281c140ea_z.jpg" width="480" height="640"></li>
+</ul>
+<h2>Resized to 200x100 and cropped to 'verticalCentre'</h2>
+<ul id="demo3">
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/95/207208507_7b3b090ed1.jpg?v=0" width="500" height="375"></li>
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/79/207200548_fc00cbadef.jpg?v=0" width="500" height="375"></li>
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/85/207212291_d281c140ea_z.jpg" width="480" height="640"></li>
+</ul>
+<h2>Cropped to 200x200 'trueCentre' - not resized</h2>
+<ul id="demo4">
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/95/207208507_7b3b090ed1.jpg?v=0" width="500" height="375"></li>
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/79/207200548_fc00cbadef.jpg?v=0" width="500" height="375"></li>
+    <li class="y-image-resize-crop"><img src="http://static.flickr.com/85/207212291_d281c140ea_z.jpg" width="480" height="640"></li>
+</ul>
+
+
+
+
+<script type="text/javascript" src="http://yui.yahooapis.com/3.1.2/build/yui/yui-min.js"></script>
+<script src="j/yui.widget.image-resize-crop.js">
+    
+</script>
+<script type="text/javascript">
+
+YUI().use('image-resize-crop', function(Y){
+    new Y.ImageResizeCrop(
+        Y.all("#demo1 li"), 
+        1, 
+        'trueCentre', 
+        'y-image-resize-crop-complete'
+    );
+    new Y.ImageResizeCrop(
+        Y.all("#demo2 li"),
+        1, 
+        'horizontalCentre', 
+        'y-image-resize-crop-complete'
+    );
+    new Y.ImageResizeCrop(
+        Y.all("#demo3 li"),
+        1, 
+        'verticalCentre', 
+        'y-image-resize-crop-complete'
+    );
+    new Y.ImageResizeCrop(
+        Y.all("#demo4 li"),
+        0, 
+        'trueCentre', 
+        'y-image-resize-crop-complete'
+    );
+});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,11 @@
+.y-image-resize-crop {
+    overflow:hidden;
+}
+.js .y-image-resize-crop img {
+    display:block;
+    visibility:hidden;
+    -ms-interpolation-mode:bicubic;
+}    
+.js .y-image-resize-crop-complete img {
+    visibility:visible;
+}
